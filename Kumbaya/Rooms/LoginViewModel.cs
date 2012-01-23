@@ -10,6 +10,10 @@ namespace Kumbaya.Rooms
   {
     private readonly RootViewModel rootViewModel;
 
+    private string workingText;
+    private string error;
+    private bool canLogin;
+
     public LoginViewModel(RootViewModel rootViewModel)
     {
       this.rootViewModel = rootViewModel;
@@ -19,25 +23,49 @@ namespace Kumbaya.Rooms
 
     public string SiteName { get; set; }
     public string UserName { get; set; }
-    public string Error { get; set; }
-    public string WorkingText { get; set; }
 
-    public bool CanLogin { get; private set; }
+    public string Error 
+    { 
+      get { return error; }
+      private set 
+      {
+        error = value;
+        NotifyOfPropertyChange("Error");
+      }
+    }
+
+    public string WorkingText { 
+      get { return workingText; } 
+      private set 
+      {
+        workingText = value;
+        NotifyOfPropertyChange("WorkingText");
+      }
+    }
+
+    public bool CanLogin { 
+      get { return canLogin; }
+      private set
+      {
+        canLogin = value;
+        NotifyOfPropertyChange("CanLogin");
+      }
+    }
 
     public void Login()
     {
       if (string.IsNullOrWhiteSpace(SiteName))
       {
         Error = "Site cannot be empty";
-        NotifyOfPropertyChange("Error");
         return;
       }
 
       WorkingText = "Signing in...";
-      NotifyOfPropertyChange("WorkingText");
       CanLogin = false;
-      NotifyOfPropertyChange("CanLogin");
 
+      // This task stuff turns out to be very
+      // untidy. I must find a cleaner way to
+      // handle this.
       var loginTask =  new Task<Site>(() => {
         var site = new Site {Name = SiteName};
         var password = ((LoginView)GetView()).Password.Password;
@@ -55,9 +83,7 @@ namespace Kumbaya.Rooms
       loginTask.ContinueWith(t => {
         var e = t.Exception.InnerException as WebException;
         WorkingText = "Login";
-        NotifyOfPropertyChange("WorkingText");
         CanLogin = true;
-        NotifyOfPropertyChange("CanLogin");
         
         if (e == null)
           return;
@@ -75,7 +101,6 @@ namespace Kumbaya.Rooms
             break;
         }
 
-        NotifyOfPropertyChange("Error");
       }, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, TaskScheduler.FromCurrentSynchronizationContext());
 
       loginTask.Start();
