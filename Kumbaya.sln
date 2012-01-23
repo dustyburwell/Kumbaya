@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kumbaya", "Kumbaya\Kumbaya.csproj", "{B7292FD8-3077-4D67-B504-FE37E928F983}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7292FD8-3077-4D67-B504-FE37E928F983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7292FD8-3077-4D67-B504-FE37E928F983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7292FD8-3077-4D67-B504-FE37E928F983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7292FD8-3077-4D67-B504-FE37E928F983}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,8 @@
+_ReSharper.Kumbaya
+_ReSharper.Kumbaya/*
+*.suo
+*.user
+obj
+obj/*
+bin
+bin/*

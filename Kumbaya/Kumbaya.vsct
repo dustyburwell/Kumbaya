@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Extern href="msobtnid.h"/>
+  
+  <Commands package="guidKumbayaPkg">
+    <Buttons>
+      <Button guid="guidKumbayaCmdSet" id="Kumbaya" priority="0x0100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <CommandName>Kumbaya</CommandName>
+          <ButtonText>Kumbaya</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+ 
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\campfireicon.bmp" usedList="bmpPic1"/>
+    </Bitmaps>
+  </Commands>
+
+  <Symbols>
+    <GuidSymbol name="guidKumbayaPkg" value="{3d651388-a1c8-4a37-afbb-39ed7e561960}" />
+    
+    <GuidSymbol name="guidKumbayaCmdSet" value="{f3bb3afd-9b57-423a-9982-483c77d92646}">
+      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="Kumbaya" value="0x0101" />
+    </GuidSymbol>
+    
+    <GuidSymbol name="guidImages" value="{bc5cec7d-2106-4e41-8d37-6d413ff676d5}" >
+      <IDSymbol name="bmpPic1" value="1" />
+    </GuidSymbol>
+  </Symbols>
+
+</CommandTable>
